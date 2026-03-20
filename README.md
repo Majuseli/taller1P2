@@ -78,7 +78,7 @@ Un hospital necesita digitalizar su sistema de gestión. El sistema debe permiti
 | Clase | Atributos clave | Métodos especiales |
 |:---|:---|:---|
 | `Persona` (abstracta) | id, nombre, apellido, fechaNacimiento, email | `calcularEdad()` (abstracto), `obtenerTipo()` (abstracto) |
-| `Empleado` (abstracta) | legajo, fechaContratacion, salarioBase, activo | `calcularSalario()` (abstracto), `antiguedad()` |
+| `Empleado` (abstracta) | legado, fechaContratacion, salarioBase, activo | `calcularSalario()` (abstracto), `antiguedad()` |
 | `Paciente` | historiaClinicaId, grupoSanguineo, alergias[], citas[] | `agregarAlergia()`, `obtenerHistorial()` |
 | `Medico` | numeroLicencia, especialidad, pacientesAsignados[], citasAtendidas | `atenderPaciente()`, `calcularSalario()` |
 | `Cirujano` | cirugiasRealizadas, disponibleEmergencias | `realizarCirugia()`, `calcularBono()` |
