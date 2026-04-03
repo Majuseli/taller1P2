@@ -16,8 +16,40 @@ public abstract class Empleado extends Persona {
             String legajo, LocalDate fechaContratacion, double salarioBase, boolean activo) {
         
         super(id, nombre, apellido, fechaNacimiento, email);
-    
-    
+        
+        this.legajo = legajo;
+        this.activo = activo;
+        
     }
+    
+    
+    
+    //GETTERS  
+    public String getLegajo() {
+        return legajo;
+    }
+
+    public LocalDate getFechaContratacion() {
+        return fechaContratacion;
+    }
+
+    public double getSalarioBase() {
+        return salarioBase;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+    
+    
+    //SETTERS CON VALIDACION
+    public void setFechaContratacion(LocalDate fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
+    }
+
+    public void setSalarioBase(double salarioBase) {
+        this.salarioBase = salarioBase;
+    }
+   
     
 }
