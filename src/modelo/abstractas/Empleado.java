@@ -44,12 +44,22 @@ public abstract class Empleado extends Persona {
     
     //SETTERS CON VALIDACION
     public void setFechaContratacion(LocalDate fechaContratacion) {
+        if (fechaContratacion  == null || fechaContratacion.isAfter(LocalDate.now())) {
+            System.out.println("FECHA INVALIDA");  //AQUI EXCEPTION RuntimeException
+        }
         this.fechaContratacion = fechaContratacion;
     }
 
     public void setSalarioBase(double salarioBase) {
+        if (salarioBase <= 0) {
+            System.out.println("SALARIO INVALIDO"); // AQUI EXCEPTION RuntimeException
+        }
         this.salarioBase = salarioBase;
     }
+    
+    
+    
+    
    
     
 }
