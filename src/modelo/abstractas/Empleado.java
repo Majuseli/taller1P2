@@ -3,6 +3,7 @@ package modelo.abstractas;
 import java.time.LocalDate;
 
 
+
 public abstract class Empleado extends Persona {
     
     private String legajo;
@@ -18,6 +19,8 @@ public abstract class Empleado extends Persona {
         super(id, nombre, apellido, fechaNacimiento, email);
         
         this.legajo = legajo;
+        setFechaContratacion(fechaContratacion);
+        setSalarioBase(salarioBase);
         this.activo = activo;
         
     }
@@ -58,8 +61,17 @@ public abstract class Empleado extends Persona {
     }
     
     
-    
-    
+    //METODO CONCRETO HEREDABLE
+    public int calcularAntiguedad() {
+    return LocalDate.now().getYear() - fechaContratacion.getYear();
+
+}
    
     
+    //METODOS ABSTRACTOS
+    public abstract double calcularSalario();
+    
+    public abstract double calcularBono();
+
+      
 }
