@@ -16,6 +16,9 @@ public class ClienteNatural extends Persona{
 
         super(id, nombre, apellido, fechaNacimiento, email);
         
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        
     }
     
     
@@ -23,17 +26,17 @@ public class ClienteNatural extends Persona{
     //METODOS ABSTRACTOS DE LA CLASE PADRE
     @Override
     public int calcularEdad() {
-        return LocalDate.now().getYear() - getFechaNacimiento().getYear();
+        return java.time.Period.between(getFechaNacimiento(), LocalDate.now() ).getYears();
     }
 
     @Override
     public String obtenerTipo() {
-        return "Cliente Natural";
+        return "Natural";
     }
 
     @Override
     public String obtenerDocumentoIdentidad(){
-        return tipoDocumento + numeroDocumento;
+        return tipoDocumento + " " + numeroDocumento;
     }
     
 }
