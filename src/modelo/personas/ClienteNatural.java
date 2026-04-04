@@ -23,6 +23,24 @@ public class ClienteNatural extends Persona{
     
     
     
+    //AGREGAR CUENTA
+    public void agregarCuenta(Object cuenta) {
+        if (cont >= cuentas.length) {
+            
+            System.out.println("Máximo de cuentas alcanzado"); // AQUI EXCEPTION CapacidadExcedidaException
+        }
+        cuentas[cont++] = cuenta;
+        
+    }
+    
+    
+    public Object[] getCuentas() {
+        return cuentas.clone();
+    }
+    
+    
+    
+    
     //METODOS ABSTRACTOS DE LA CLASE PADRE
     @Override
     public int calcularEdad() {
