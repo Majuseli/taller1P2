@@ -56,7 +56,7 @@ public class ClienteEmpresarial extends Persona{
 
     @Override
     public String obtenerDocumentoIdentidad(){
-        return  "NIT: " + nit;
+        return   nit;
     }
         
     
