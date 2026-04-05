@@ -20,7 +20,7 @@ public class SistemaBancarioDemo {
             }
             
         }
-        
+         
         
         System.out.println("Nombre: " + cliente.getNombreCompleto());
         System.out.println("Edad: " + cliente.calcularEdad());
