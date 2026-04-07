@@ -1,8 +1,9 @@
 package modelo.abstractas;
+import  modelo.interfaces.Transaccionable;
 
 import java.time.LocalDateTime;
 
-public abstract class Cuenta {
+public abstract class Cuenta implements Transaccionable{
     
     private String numeroCuenta;
     private double saldo;
@@ -23,9 +24,7 @@ public abstract class Cuenta {
     
     }
     
-    
-    
-    
+
     //GETTERS
     public String getNumeroCuenta() {
         return numeroCuenta;
@@ -64,14 +63,54 @@ public abstract class Cuenta {
         return historial.clone(); //DEVUELVE UNA COPIA
     }
     
-    
- 
-    
+  
     //METODOS ABSTRACTOS
     public abstract double calcularInteres();
     
     public abstract double getLimiteRetiro();
     
     public abstract String getTipoCuenta();
+    
+    
+    
+  //METODOS TRANSACCIONABLE
+    @Override
+    public void depositar(double monto) {
+        // AQUI CuentaBloqueadaException 
+        verificarBloqueada();
+
+        if (monto <= 0) {
+            System.out.println("Monto Invalido"); //AQUI DatoInvalidoException
+
+        }
+        this.saldo += monto;
+    }
+
+       @Override
+    public void retirar(double monto) {
+        // AQUI CuentaBloqueadaException 
+        verificarBloqueada();
+
+        if (monto <= 0) {
+            System.out.println("Monto Invalido"); //AQUI DatoInvalidoException
+        }
+
+        if (monto > saldo) {
+            System.out.println("Saldo insuficiente");// AQUI SaldoInsuficienteException
+        }
+
+        this.saldo -= monto;
+    }
+
+   
+    @Override
+    public double calcularComision(double monto) {
+        return monto * 0.01; //CAMBIAR DESPUES
+    }
+
+    @Override
+    public double consultarSaldo() {
+        return saldo;
+    }
     
 }
