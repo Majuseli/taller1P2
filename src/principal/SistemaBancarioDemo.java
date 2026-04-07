@@ -11,7 +11,7 @@ public class SistemaBancarioDemo {
        
         ClienteNatural cliente = new ClienteNatural("1222", "Eliana", "Vertel", LocalDate.of(2003, 8, 13), "eli@gmail.com", "cc", "8766");
         ClienteEmpresarial cliente2 = new ClienteEmpresarial("1222", "Eliana", "Vertel", LocalDate.of(2020, 4, 20), "contabilidad@mje.com",
-                                                                                            "98885278 - ", "MJE SAS", "Air Vertel");
+                                                                                            "98885278 - 2 ", "MJE SAS", "Air Vertel");
         
         CuentaAhorro cuenta = new CuentaAhorro("000098787", 988782, 0.7, 5);
         
@@ -40,6 +40,11 @@ public class SistemaBancarioDemo {
         System.out.println("Saldo: " + cuenta.getSaldo());
         System.out.println("Interés mensual: " + cuenta.calcularInteres());
         System.out.println("Tipo Cuenta: " + cuenta.getTipoCuenta());
+        System.out.println("\nSaldo Inicial :" + cuenta.consultarSaldo());
+        cuenta.depositar(200000);
+        System.out.println("Saldo despues de depositar: " + cuenta.consultarSaldo());
+        cuenta.retirar(800000);
+        System.out.println("Saldo despés de retirar: " + cuenta.consultarSaldo());
         
         
         
