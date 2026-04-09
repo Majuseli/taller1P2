@@ -41,10 +41,8 @@ public class SistemaBancarioDemo {
         System.out.println("Interés mensual: " + cuenta.calcularInteres());
         System.out.println("Tipo Cuenta: " + cuenta.getTipoCuenta());
         System.out.println("\nSaldo Inicial :" + cuenta.consultarSaldo());
-        cuenta.depositar(200000);
-        System.out.println("Saldo despues de depositar: " + cuenta.consultarSaldo());
-        cuenta.retirar(800000);
-        System.out.println("Saldo despés de retirar: " + cuenta.consultarSaldo());
+        
+        
         
         
         

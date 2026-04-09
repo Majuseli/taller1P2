@@ -1,7 +1,9 @@
 package modelo.abstractas;
 import  modelo.interfaces.Transaccionable;
+import modelo.excepciones.*;
 
 import java.time.LocalDateTime;
+import modelo.excepciones.CuentaBloqueadaException;
 
 public abstract class Cuenta implements Transaccionable{
     
@@ -45,9 +47,9 @@ public abstract class Cuenta implements Transaccionable{
     
     
     //METODOS CONCRETOS
-    public void verificarBloqueada(){
+    public void verificarBloqueada() throws CuentaBloqueadaException {
         if (bloqueada) {
-            System.out.println("Cuenta Bloqueada"); //AQUI EXCEPTION CuentaBloqueadaException
+            throw new CuentaBloqueadaException("Cuenta Bloqueada", "ERROR_BLOQUEADA");
         }
     }
     
@@ -75,28 +77,29 @@ public abstract class Cuenta implements Transaccionable{
     
   //METODOS TRANSACCIONABLE
     @Override
-    public void depositar(double monto) {
-        // AQUI CuentaBloqueadaException 
+    public void depositar(double monto) throws CuentaBloqueadaException {
         verificarBloqueada();
 
         if (monto <= 0) {
-            System.out.println("Monto Invalido"); //AQUI DatoInvalidoException
+            throw new DatoInvalidoException("Monto Inválido", "Monto", monto);
 
         }
         this.saldo += monto;
     }
 
-       @Override
-    public void retirar(double monto) {
-        // AQUI CuentaBloqueadaException 
+    @Override
+    public void retirar(double monto) throws CuentaBloqueadaException, SaldoInsuficienteException {
+
         verificarBloqueada();
 
         if (monto <= 0) {
-            System.out.println("Monto Invalido"); //AQUI DatoInvalidoException
+            throw new DatoInvalidoException("Monto Inválido", "Monto", monto);
+            
         }
 
         if (monto > saldo) {
-            System.out.println("Saldo insuficiente");// AQUI SaldoInsuficienteException
+            throw new SaldoInsuficienteException("Saldo Insuficiente", "ERROR_SALDO", saldo, monto);
+
         }
 
         this.saldo -= monto;
