@@ -64,12 +64,13 @@ public class Banco {
             throw new CapacidadExcedidaException("Capacidad Máxima de Cuentas Alcanzada", "ERROR_CUENTAS", cuentas.length);
         }
         
+        cliente.agregarCuenta(c);
         
         cuentas[contadorCuentas] = c;
         contadorCuentas++;
         
-        cliente.agregarCuenta(c);
     }
+    
     
     
     

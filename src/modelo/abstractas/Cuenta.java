@@ -1,7 +1,7 @@
 package modelo.abstractas;
 import  modelo.interfaces.Transaccionable;
 import modelo.excepciones.*;
-
+import modelo.banco.Transaccion;
 import java.time.LocalDateTime;
 import modelo.excepciones.CuentaBloqueadaException;
 
@@ -13,7 +13,7 @@ public abstract class Cuenta implements Transaccionable{
     private LocalDateTime fechaCreacion;
     private LocalDateTime ultimaModificacion;
     private String usuarioModificacion;
-    private Object[ ] historial = new Object[20]; //CAMBIAR POR TRANSACCION DESPUES DE CREARLA
+    private Transaccion[ ] historial = new Transaccion[20]; 
     private int cont = 0;
     
     
@@ -54,15 +54,17 @@ public abstract class Cuenta implements Transaccionable{
     }
     
     
-    public void agregarAlHistorial(Object i) {  //CAMBIAR POR TRANSACCION DESPUES DE CREARLA
+    public void agregarAlHistorial(Transaccion t) throws  CapacidadExcedidaException{  
         if (cont >= historial.length) {
-            System.out.println("Historial lleno"); //AQUI EXCEPTION CuentaBloqueadaException
+            throw new CapacidadExcedidaException("Historial Lleno", "ERROR_HISTORIAL", historial.length);
         }
-        historial[cont++] = i;
+        historial[cont++] = t;
     }
 
-    public Object[ ] getHistorial() {
-        return historial.clone(); //DEVUELVE UNA COPIA
+    public Transaccion[] getHistorial() {
+        Transaccion[] copia = new Transaccion[cont];
+        System.arraycopy(historial, 0, copia, 0, cont);
+        return copia;
     }
     
   
