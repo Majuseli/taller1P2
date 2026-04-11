@@ -34,7 +34,7 @@ public class CuentaCredito extends Cuenta{
 
     @Override
     public String getTipoCuenta() {
-        return "Crédito";
+        return "CREDITO";
     }
     
 }

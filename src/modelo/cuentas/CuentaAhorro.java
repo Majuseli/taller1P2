@@ -9,7 +9,7 @@ public class CuentaAhorro extends Cuenta {
     private int maxRetirosMes;
     
     
-    //CONTROLADOR
+  
     public CuentaAhorro(String numeroCuenta, double saldo, double tasaInteres, int maxRetirosMes) {
 
         super(numeroCuenta, saldo);
@@ -32,7 +32,7 @@ public class CuentaAhorro extends Cuenta {
 
     @Override
     public String getTipoCuenta() {
-        return "Ahorros";
+        return "AHORROS";
     }
     
 }

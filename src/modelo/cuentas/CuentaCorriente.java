@@ -31,7 +31,7 @@ public class CuentaCorriente extends Cuenta {
 
     @Override
     public String getTipoCuenta() {
-        return "Corriente";
+        return "CORRIENTE";
     }
     
 }
