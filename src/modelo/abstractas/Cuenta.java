@@ -73,6 +73,9 @@ public abstract class Cuenta implements Transaccionable{
     
     public abstract String getTipoCuenta();
     
+    @Override
+    public abstract double calcularComision(double monto);
+
     
     
   //METODOS TRANSACCIONABLE
@@ -97,7 +100,7 @@ public abstract class Cuenta implements Transaccionable{
             
         }
 
-        if (monto > saldo) {
+        if (monto > getLimiteRetiro()) {
             throw new SaldoInsuficienteException("Saldo Insuficiente", "ERROR_SALDO", saldo, monto);
 
         }
@@ -106,10 +109,6 @@ public abstract class Cuenta implements Transaccionable{
     }
 
    
-    @Override
-    public double calcularComision(double monto) {
-        return monto * 0.01; //CAMBIAR DESPUES
-    }
 
     @Override
     public double consultarSaldo() {

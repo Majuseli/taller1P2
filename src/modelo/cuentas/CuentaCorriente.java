@@ -2,6 +2,7 @@ package modelo.cuentas;
 
 import modelo.abstractas.Cuenta;
 
+
 public class CuentaCorriente extends Cuenta {
     
     private double montoSobregiro;
@@ -32,6 +33,12 @@ public class CuentaCorriente extends Cuenta {
     @Override
     public String getTipoCuenta() {
         return "CORRIENTE";
+    }
+    
+    
+    @Override
+    public double calcularComision(double monto) {
+        return monto * 0.01;
     }
     
 }
