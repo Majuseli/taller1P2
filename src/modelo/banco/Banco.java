@@ -69,7 +69,30 @@ public class Banco {
         contadorCuentas++;
         
         //AQUI agregar cuenta al cliente despues de modificar cliente natural
-  
+    }
+    
+    
+    
+    public double calcularNominaTotal() {
+        double total = 0;
+
+        for (int i = 0; i < contadorEmpleados; i++) {
+            total += empleados[i].calcularSalario();
+        }
+
+        return total;
+    }
+    
+    
+    
+    
+    public void calcularInteresesMensuales() {
+
+        for (int i = 0; i < contadorCuentas; i++) {
+            double interes = cuentas[i].calcularInteres(); 
+
+            System.out.println("Interés de la cuenta: " + interes);
+        }
     }
     
     
