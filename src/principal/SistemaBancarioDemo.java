@@ -16,8 +16,7 @@ public class SistemaBancarioDemo {
         CuentaAhorro cuenta = new CuentaAhorro("000098787", 988782, 0.7, 5);
         
         
-        cliente.agregarCuenta("Ahorros 000098787");
-        cliente.agregarCuenta("credito 0999");
+     
         
         Object[] listaCuentas = cliente.getCuentas();
         for (int i = 0; i < listaCuentas.length; i++) {

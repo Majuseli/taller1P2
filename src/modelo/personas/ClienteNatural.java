@@ -3,13 +3,15 @@ import java.time.LocalDate;
 import modelo.abstractas.Persona;
 import modelo.interfaces.*;
 import java.time.LocalDateTime;
+import modelo.abstractas.Cuenta;
+import modelo.excepciones.CapacidadExcedidaException;
 
 
 public class ClienteNatural extends Persona implements Consultable, Notificable, Auditable{
     
     private String tipoDocumento;
     private String numeroDocumento;
-    private Object[ ] cuentas = new Object[5]; //CAMBIAR POR CUENTA DESPUES DE TERMINARLA 100%
+    private Cuenta[ ] cuentas = new Cuenta[5]; 
     private int cont = 0;
     
     //INTERFACES AUDITABLE Y NOTIFICABLE
@@ -35,18 +37,19 @@ public class ClienteNatural extends Persona implements Consultable, Notificable,
     
     
     //AGREGAR CUENTA
-    public void agregarCuenta(Object cuenta) {
+    public void agregarCuenta(Cuenta cuenta) throws CapacidadExcedidaException{
+        
         if (cont >= cuentas.length) {
+            throw new CapacidadExcedidaException("Máximo de Cuentas Alcanzado", "ERROR_CUENTAS_CLIENTE", cuentas.length);
             
-            System.out.println("Máximo de cuentas alcanzado"); // AQUI EXCEPTION CapacidadExcedidaException
         }
         cuentas[cont++] = cuenta;
         
     }
     
     
-    public Object[] getCuentas() {
-        Object[] copia = new Object[cont];
+    public Cuenta[] getCuentas() {
+        Cuenta[] copia = new Cuenta[cont];
     
         System.arraycopy(cuentas, 0, copia, 0, cont);
         

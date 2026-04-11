@@ -68,7 +68,7 @@ public class Banco {
         cuentas[contadorCuentas] = c;
         contadorCuentas++;
         
-        //AQUI agregar cuenta al cliente despues de modificar cliente natural
+        cliente.agregarCuenta(c);
     }
     
     
