@@ -92,7 +92,7 @@ public class Banco {
         for (int i = 0; i < contadorCuentas; i++) {
             double interes = cuentas[i].calcularInteres(); 
 
-            System.out.println("Interés de la cuenta: " + interes);
+            System.out.println("Cuenta: " + cuentas[i].getNumeroCuenta() + "   |   Interés: " + interes);
         }
     }
     

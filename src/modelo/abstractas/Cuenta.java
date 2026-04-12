@@ -1,5 +1,6 @@
 package modelo.abstractas;
 import  modelo.interfaces.Transaccionable;
+import modelo.interfaces.Auditable;
 import modelo.excepciones.*;
 import modelo.banco.Transaccion;
 import java.time.LocalDateTime;
@@ -54,6 +55,12 @@ public abstract class Cuenta implements Transaccionable{
     }
     
     
+    protected void registrarModificacion(String usuario) {
+        this.usuarioModificacion = usuario;
+        this.ultimaModificacion = java.time.LocalDateTime.now();
+    }
+    
+    
     public void agregarAlHistorial(Transaccion t) throws  CapacidadExcedidaException{  
         if (cont >= historial.length) {
             throw new CapacidadExcedidaException("Historial Lleno", "ERROR_HISTORIAL", historial.length);
@@ -90,6 +97,7 @@ public abstract class Cuenta implements Transaccionable{
 
         }
         this.saldo += monto;
+        registrarModificacion("Usuario_01"); //Usuario de ejemplo
     }
 
     @Override
@@ -108,6 +116,7 @@ public abstract class Cuenta implements Transaccionable{
         }
 
         this.saldo -= monto;
+        registrarModificacion("Usuario_01"); //Usuario de ejemplo
     }
 
    
