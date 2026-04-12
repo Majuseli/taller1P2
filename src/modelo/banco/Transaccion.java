@@ -31,6 +31,10 @@ public class Transaccion {
     
 
     public void cambiarEstado(EstadoTransaccion nuevoEstado) throws EstadoTransaccionInvalidoException {
+        
+        if (nuevoEstado == null) {
+            throw new EstadoTransaccionInvalidoException("Estado Inválido. No puede ser NULL");
+        }
 
         boolean valido = false; 
 

@@ -1,6 +1,7 @@
 package modelo.abstractas;
 
 import java.time.LocalDate;
+import modelo.excepciones.DatoInvalidoException;
 
 
 public abstract class Persona {
@@ -49,35 +50,35 @@ public abstract class Persona {
     //SETTERS CON LA VALIDACIÓN
     public void setId(String id) {
         if(id == null || id.isEmpty()) {
-            System.out.println("ID Invalido"); //AQUI DatoInvalidoException
+            throw new DatoInvalidoException("ID Inválido", "id", id);
         }
         this.id = id;
     }
 
     public void setNombre(String nombre) {
         if (nombre == null || nombre.isEmpty()) {
-            System.out.println("Nombre Invalido"); //AQUI DatoInvalidoException
+            throw new DatoInvalidoException("Nombre Inválido", "nombre", nombre);
         }
         this.nombre = nombre;
     }
 
     public void setApellido(String apellido) {
         if (apellido == null || apellido.isEmpty()) {
-            System.out.println("Apelliod Invalido"); //AQUI DatoInvalidoException
+            throw new DatoInvalidoException("Apellido Inválido", "apellido", apellido);
         }
         this.apellido = apellido;
     }
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         if (fechaNacimiento == null || fechaNacimiento.isAfter(LocalDate.now())) {
-            System.out.println("Fecha Invalida"); //AQUI DatoInvalidoException
+            throw new DatoInvalidoException("Fecha Inválida", "fechaNacimiento", fechaNacimiento);
         }
         this.fechaNacimiento = fechaNacimiento;
     }
 
     public void setEmail(String email) {
         if (email == null || !email.contains("@")) {
-            System.out.println("Email Invalido"); //AQUI DatoInvalidoException
+            throw new DatoInvalidoException("Email inválido", "email", email);
         }
         this.email = email;
     }

@@ -1,6 +1,7 @@
 package modelo.abstractas;
 
 import java.time.LocalDate;
+import modelo.excepciones.DatoInvalidoException;
 
 
 
@@ -46,16 +47,16 @@ public abstract class Empleado extends Persona {
     
     
     //SETTERS CON VALIDACION
-    public void setFechaContratacion(LocalDate fechaContratacion) {
+    public void setFechaContratacion(LocalDate fechaContratacion) throws DatoInvalidoException{
         if (fechaContratacion  == null || fechaContratacion.isAfter(LocalDate.now())) {
-            System.out.println("FECHA INVALIDA");  //AQUI EXCEPTION RuntimeException
+            throw new DatoInvalidoException("Fecha Inválida", "Fecha Contratación", fechaContratacion);
         }
         this.fechaContratacion = fechaContratacion;
     }
 
-    public void setSalarioBase(double salarioBase) {
+    public void setSalarioBase(double salarioBase) throws DatoInvalidoException{
         if (salarioBase <= 0) {
-            System.out.println("SALARIO INVALIDO"); // AQUI EXCEPTION RuntimeException
+            throw new DatoInvalidoException("Salario Inválido", "SalarioBase", salarioBase);
         }
         this.salarioBase = salarioBase;
     }
@@ -72,6 +73,25 @@ public abstract class Empleado extends Persona {
     public abstract double calcularSalario();
     
     public abstract double calcularBono();
+    
+    
+    
+    //METODOS HEREDADOS DE PERSONA
+    @Override
+    public int calcularEdad() {
+        return java.time.Period.between(getFechaNacimiento(), LocalDate.now()).getYears();
+    }
+
+    @Override
+    public String obtenerTipo() {
+        return "Empleado";
+    }
+
+    @Override
+    public String obtenerDocumentoIdentidad() {
+        return getLegajo();
+    }
+    
 
       
 }
