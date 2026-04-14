@@ -5,8 +5,9 @@ import modelo.excepciones.*;
 import modelo.banco.Transaccion;
 import java.time.LocalDateTime;
 import modelo.excepciones.CuentaBloqueadaException;
+import modelo.interfaces.Consultable;
 
-public abstract class Cuenta implements Transaccionable{
+public abstract class Cuenta implements Transaccionable, Auditable, Consultable{
     
     private String numeroCuenta;
     private double saldo;
@@ -44,8 +45,13 @@ public abstract class Cuenta implements Transaccionable{
     public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
-    
-    
+ 
+    //Metodo poder bloquear/desbloquear desde el Main
+    public void setBloqueada(boolean bloqueada) {
+        this.bloqueada = bloqueada;
+    }
+
+
     
     //METODOS CONCRETOS
     public void verificarBloqueada() throws CuentaBloqueadaException {
@@ -55,7 +61,7 @@ public abstract class Cuenta implements Transaccionable{
     }
     
     
-    protected void registrarModificacion(String usuario) {
+    public void registrarModificacion(String usuario) {
         this.usuarioModificacion = usuario;
         this.ultimaModificacion = java.time.LocalDateTime.now();
     }
@@ -110,7 +116,7 @@ public abstract class Cuenta implements Transaccionable{
             
         }
 
-        if (monto > getLimiteRetiro()) {
+        if (monto > getSaldo()) {
             throw new SaldoInsuficienteException("Saldo Insuficiente", "ERROR_SALDO", saldo, monto);
 
         }
@@ -119,11 +125,30 @@ public abstract class Cuenta implements Transaccionable{
         registrarModificacion("Usuario_01"); //Usuario de ejemplo
     }
 
-   
 
     @Override
     public double consultarSaldo() {
         return saldo;
     }
+    
+    
+    
+    //METODOS AUDITABLES
+    @Override
+    public LocalDateTime obtenerFechaCreacion() {
+        return this.fechaCreacion;
+    }
+
+    @Override
+    public LocalDateTime obtenerUltimaModificacion() {
+        return this.ultimaModificacion;
+    }
+
+    @Override
+    public String obtenerUsuarioModificacion() {
+        return this.usuarioModificacion;
+    }
+
+
     
 }

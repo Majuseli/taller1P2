@@ -43,4 +43,21 @@ public class CuentaCredito extends Cuenta{
         return monto * 0.02;
 }
     
+    
+    //CONSULTABLE
+    @Override
+    public String obtenerTipo() {
+        return "Cuenta de Credito";
+    }
+
+    @Override
+    public String obtenerResumen() {
+        return "Numero: " + getNumeroCuenta()+ " | Cupo: " + consultarSaldo();
+    }
+
+    @Override
+    public boolean estaActivo() {
+        return !isBloqueada();
+    }
+    
 }

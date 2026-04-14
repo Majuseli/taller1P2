@@ -1,14 +1,14 @@
 package modelo.personas;
 
 import java.time.LocalDate;
-import modelo.abstractas.Persona;
+import modelo.abstractas.Cliente;
 import modelo.interfaces.*;
 import java.time.LocalDateTime;
 import modelo.abstractas.Cuenta;
 import modelo.excepciones.CapacidadExcedidaException;
 
  
-public class ClienteEmpresarial extends Persona implements Consultable, Notificable, Auditable{
+public class ClienteEmpresarial extends Cliente implements Consultable, Notificable, Auditable{
     private String nit;
     private String razonSocial;
     private String representanteLegal;

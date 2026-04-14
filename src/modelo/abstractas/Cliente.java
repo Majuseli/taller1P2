@@ -2,6 +2,7 @@
 package modelo.abstractas;
 import  java.time.LocalDate;
 import modelo.excepciones.CapacidadExcedidaException;
+import modelo.abstractas.Cuenta;
 
 
 public abstract class Cliente extends Persona{

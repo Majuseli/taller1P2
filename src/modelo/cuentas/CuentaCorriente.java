@@ -41,4 +41,22 @@ public class CuentaCorriente extends Cuenta {
         return monto * 0.01;
     }
     
+    
+    //CONSULTABLE
+    @Override
+    public String obtenerTipo() {
+        return "Cuenta Corriente";
+    }
+
+    @Override
+    public String obtenerResumen() {
+        return "Numero: " + getNumeroCuenta() + " | Sobregiro: " + montoSobregiro;
+    }
+
+    @Override
+    public boolean estaActivo() {
+        return !isBloqueada();
+    }
+
+    
 }

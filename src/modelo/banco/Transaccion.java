@@ -16,7 +16,7 @@ public class Transaccion {
     private String descripcion;
     
     
-
+    
     public Transaccion(String id, Cuenta cuentaOrigen, Cuenta cuentaDestino, double monto, String descripcion) {
         this.id = id;
         this.cuentaOrigen = cuentaOrigen;
@@ -71,9 +71,7 @@ public class Transaccion {
         
     }
     
-    
-    
-
+   
     public String generarComprobante() {
 
         return "ID: " + id

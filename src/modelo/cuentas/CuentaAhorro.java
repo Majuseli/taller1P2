@@ -41,4 +41,23 @@ public class CuentaAhorro extends Cuenta {
         return monto * 0.004;
     }
     
+    
+    //CONSULTABLE
+    @Override
+    public String obtenerTipo() {
+        return "Cuenta de Ahorros";
+    }
+
+
+    @Override
+    public String obtenerResumen() {
+        return "Numero: " + getNumeroCuenta() + " | Saldo: " + getSaldo();
+    }
+    
+    
+    @Override
+    public boolean estaActivo() {
+        return consultarSaldo() >= 0;
+}
+    
 }
