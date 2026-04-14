@@ -57,6 +57,12 @@ public class ClienteNatural extends Cliente implements Consultable, Notificable,
     }
     
     
+     //SETTER PARA ACPETARNOTIFICACIONES
+    public void setAceptaNotificaciones(boolean aceptaNotificaciones) {
+        this.aceptaNotificaciones = aceptaNotificaciones;
+    }
+    
+    
     
     //METODOS ABSTRACTOS DE LA CLASE PADRE
     @Override
@@ -127,5 +133,8 @@ public class ClienteNatural extends Cliente implements Consultable, Notificable,
         this.usuarioModificacion = usuario;
         this.ultimaModificacion = LocalDateTime.now();
     }
+    
+    
+   
     
 }

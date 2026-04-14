@@ -49,11 +49,11 @@ public class SistemaBancarioDemo {
             
             
             //CREACION DE CLIENTES
-            Cliente cliente1 = new ClienteNatural("0001", "Pablo", "Torres", LocalDate.of(1990, 7, 1), "pablo01@gmail.com", "CC", "1068234879");
+            ClienteNatural cliente1 = new ClienteNatural("0001", "Pablo", "Torres", LocalDate.of(1990, 7, 1), "pablo01@gmail.com", "CC", "1068234879");
             
-            Cliente cliente2 = new ClienteEmpresarial("0002", "Business", "SAS", LocalDate.of(2003, 1, 1), "business@gmail.com", "900123", "MyBusiness", "Carlos Sanchez");
+            ClienteEmpresarial cliente2 = new ClienteEmpresarial("0002", "Business", "SAS", LocalDate.of(2003, 1, 1), "business@gmail.com", "900123", "MyBusiness", "Carlos Sanchez");
             
-            Cliente cliente3 = new ClienteNatural("0003", "Eliana", "Vertel", LocalDate.of(2003, 8, 13), "evc@gmail.com", "CC", "1068136346");
+            ClienteNatural cliente3 = new ClienteNatural("0003", "Eliana", "Vertel", LocalDate.of(2003, 8, 13), "evc@gmail.com", "CC", "1068136346");
                     
             banco.registrarCliente(cliente1);
             banco.registrarCliente(cliente2);
@@ -156,6 +156,24 @@ public class SistemaBancarioDemo {
                 System.out.println("¡ERROR! " + e.getMessage());
             }
             
+            
+            
+            //NOTIFICAR A UN CLIENTE
+            System.out.println("\n========NOTIFICACION========");
+            System.out.println("\n---Cliente con notificaciones ACTIVAS---");
+            cliente2.setAceptaNotificaciones(true);
+            if (cliente2.aceptaNotificaciones()) {
+                cliente2.notificar("Estado de Cuenta Disponible.");
+            }
+            
+            System.out.println("\n---Cliente con notificaciones DESACTIVADAS---");
+            cliente1.setAceptaNotificaciones(false);
+            if (cliente1.aceptaNotificaciones()) {
+                cliente1.notificar("Mensaje No Disponible.");
+            } else {
+                System.out.println("El sistema respetó la privacidad: Envío bloqueado para " + cliente1.obtenerContacto());
+            }
+          
             
             
             // 11. LLAMADO DE REGISTAR MODIFICACION

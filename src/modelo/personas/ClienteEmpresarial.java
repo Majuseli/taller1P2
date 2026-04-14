@@ -57,6 +57,12 @@ public class ClienteEmpresarial extends Cliente implements Consultable, Notifica
     }
     
     
+    //SETTER PARA ACPETARNOTIFICACIONES
+    public void setAceptaNotificaciones(boolean aceptaNotificaciones) {
+        this.aceptaNotificaciones = aceptaNotificaciones;
+    }
+    
+    
     //METODOS ABSTRACTOS
     @Override
     public int calcularEdad() {
@@ -103,6 +109,7 @@ public class ClienteEmpresarial extends Cliente implements Consultable, Notifica
     public boolean aceptaNotificaciones() {
         return aceptaNotificaciones;
     }
+    
 
     // METODOS AUDITABLE
     @Override
@@ -125,6 +132,7 @@ public class ClienteEmpresarial extends Cliente implements Consultable, Notifica
         this.usuarioModificacion = usuario;
         this.ultimaModificacion = LocalDateTime.now();
     }
+   
         
     
     
