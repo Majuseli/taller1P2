@@ -55,7 +55,14 @@ A continuación se listan **todas** las historias de usuario del sistema. Cada h
 
 | ID | Historia | Criterios de Aceptación | Prioridad | Story Points |
 |:---|:---|:---|:---:|:---:|
-| **HU-01** | Como **cajero**, quiero registrar un cliente natural con sus datos personales para aperturar una cuenta en el sistema | - El sistema valida que el documento de identidad no esté repetido. El sistema lanza `CapacidadExcedidaException` si el banco alcanzó su límite de clientes. Los datos nulos o vacíos lanzan 
+| **HU-01** | Como **cajero**, quiero registrar un cliente natural con sus datos personales para aperturar una cuenta en el sistema | - El sistema valida que el documento de identidad no esté repetido. El sistema lanza `CapacidadExcedidaException` si el banco alcanzó su límite de clientes. Los datos nulos o vacíos lanzan.
+| HU-02 | Como **cajero**, quiero registrar un cliente empresarial y natural con sus datos para poder ofrecer servicios financieros | - El sistema valida el NIT. - No permite campos vacíos. - Lanza `CapacidadExcedidaException` si se alcanza el límite. |
+| HU-03 | Como **cajero**, quiero abrir una cuenta para un cliente existente para que pueda manejar su dinero | - El cliente debe existir en el sistema. - Se lanza `ClienteNoEncontradoException` si no existe. - Si se supera el límite de cuentas, lanza `CapacidadExcedidaException`. |
+| HU-04 | Como **cliente**, quiero depositar dinero en mi cuenta para aumentar mi saldo | - El monto debe ser mayor a 0. - Si la cuenta está bloqueada, lanza `CuentaBloqueadaException`. - Datos inválidos lanzan `DatoInvalidoException`. |
+| HU-05 | Como **cliente**, quiero retirar dinero de mi cuenta para usarlo cuando lo necesite | - El monto debe ser válido. - No puede retirar más del saldo disponible. - Lanza `SaldoInsuficienteException` si no hay fondos suficientes. |
+| HU-06 | Como **empleado**, quiero calcular mi salario para conocer mi pago total | - El salario incluye el bono. - Cada tipo de empleado calcula su bono de forma diferente. |
+| HU-07 | Como **gerente**, quiero aprobar créditos para autorizar préstamos a clientes | - Solo el gerente puede aprobar créditos. - Si otro rol intenta hacerlo, lanza PermisoInsuficienteException. |
+| HU-08 | Como **dministrador**, quiero calcular la nómina total del banco para conocer los gastos operativos | - Se suman los salarios de todos los empleados. - Se utiliza polimorfismo para calcular cada salario. |
 
 ---
 
