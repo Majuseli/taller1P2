@@ -62,7 +62,8 @@ A continuación se listan **todas** las historias de usuario del sistema. Cada h
 | HU-05 | Como **cliente**, quiero retirar dinero de mi cuenta para usarlo cuando lo necesite | - El monto debe ser válido. - No puede retirar más del saldo disponible. - Lanza `SaldoInsuficienteException` si no hay fondos suficientes. |
 | HU-06 | Como **empleado**, quiero calcular mi salario para conocer mi pago total | - El salario incluye el bono. - Cada tipo de empleado calcula su bono de forma diferente. |
 | HU-07 | Como **gerente**, quiero aprobar créditos para autorizar préstamos a clientes | - Solo el gerente puede aprobar créditos. - Si otro rol intenta hacerlo, lanza PermisoInsuficienteException. |
-| HU-08 | Como **dministrador**, quiero calcular la nómina total del banco para conocer los gastos operativos | - Se suman los salarios de todos los empleados. - Se utiliza polimorfismo para calcular cada salario. |
+| HU-08 | Como **sistema**, quiero registrar modificaciones en las cuentas para llevar control de cambios | - Se guarda usuario que hizo el cambio. - Se guarda fecha de modificación. |
+| HU-09 | Como **dministrador**, quiero calcular la nómina total del banco para conocer los gastos operativos | - Se suman los salarios de todos los empleados. - Se utiliza polimorfismo para calcular cada salario. |
 
 ---
 
